@@ -1,0 +1,43 @@
+TABLE: Associations
+-------------------
+id                | INT PRIMARY KEY           | ID
+name              | VARCHAR(255)             | Titre
+acronym           | VARCHAR(50)              | Sigle
+founding_date     | DATE                     | Kuruluş Tarihi
+membership_status | VARCHAR(50)              | Üyelik Durumu
+status_date       | DATE                     | Aktif/Pasif Tarihi
+legal_id          | VARCHAR(50)              | N° RNA / SIRET
+legal_form        | VARCHAR(100)             | Forme Juridique
+religious_qualification | VARCHAR(100)        | QUALITE CULTUELLE
+
+TABLE: Addresses
+----------------
+id                | INT PRIMARY KEY
+association_id    | INT                     | FK -> Associations(id)
+street_address    | VARCHAR(255)             | Adresse
+postal_code       | VARCHAR(20)              | Code Postal
+city              | VARCHAR(100)             | Commune
+department_name   | VARCHAR(100)             | Nom du Département
+region_name       | VARCHAR(100)             | Nom de la Région
+
+TABLE: Contacts
+----------------
+id                     | INT PRIMARY KEY
+association_id         | INT                     | FK -> Associations(id)
+president_first_name   | VARCHAR(100)            | Başkan Adı
+president_last_name    | VARCHAR(100)            | Başkan Soyadı
+president_email        | VARCHAR(100)            | Başkan E-Posta
+president_phone        | VARCHAR(50)             | Başkan Cep Telefonu
+website                | VARCHAR(255)            | Site WEB
+email                  | VARCHAR(100)            | Elektronik Posta
+phone                  | VARCHAR(50)             | Sabit Telefon
+
+TABLE: Facilities
+-----------------
+id                     | INT PRIMARY KEY
+association_id         | INT                     | FK -> Associations(id)
+prayer_area_m2         | DECIMAL(10,2)           | İbadet Alanı m2
+prayer_capacity        | INT                     | İA Kapasite
+member_count           | INT                     | Dernek Üye Sayısı
+students_count         | INT                     | Kurs Öğrenci Sayısı
+friday_attendance      | INT                     | Cuma Namazı Cemaat Sayısı
