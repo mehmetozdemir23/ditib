@@ -1,5 +1,12 @@
 {
     "preset": "laravel",
+    "exclude": [
+        "routes",
+        "config",
+        "database/migrations",
+        "database/seeders",
+        "resources/views"
+    ],
     "rules": {
         "array_push": true,
         "backtick_to_shell_exec": true,
@@ -7,9 +14,6 @@
         "declare_strict_types": true,
         "lowercase_keywords": true,
         "lowercase_static_reference": true,
-        "final_class": true,
-        "final_internal_class": true,
-        "final_public_method_for_abstract_class": true,
         "fully_qualified_strict_types": true,
         "global_namespace_import": {
             "import_classes": true,
@@ -22,12 +26,14 @@
         "no_superfluous_elseif": true,
         "no_useless_else": true,
         "no_multiple_statements_per_line": true,
-        "ordered_class_elements": [
-            "use_trait",
-            "constant",
-            "property",
-            "method"
-        ],
+        "ordered_class_elements": {
+            "order": [
+                "use_trait",
+                "constant",
+                "property",
+                "method"
+            ]
+        },
         "ordered_interfaces": true,
         "ordered_traits": true,
         "protected_to_private": true,
