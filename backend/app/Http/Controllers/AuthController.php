@@ -6,10 +6,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
-    public function __invoke(LoginRequest $request): JsonResponse
+    public function login(LoginRequest $request): JsonResponse
     {
         if (
             auth()->attempt(
@@ -36,5 +37,17 @@ class LoginController extends Controller
                 'email' => ['Les identifiants fournis sont incorrects.'],
             ],
         ], 422);
+    }
+
+    public function logout(Request $request): JsonResponse
+    {
+        auth()->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return response()->json([
+            'message' => 'Déconnexion réussie',
+        ]);
     }
 }
